@@ -9,24 +9,13 @@
 | first_name       | string | null: false |
 | family_name_kana | string | null: false |
 | first_name_kana  | string | null: false |
+| birth_date       | date   | null: false |
 
 
 Association
 . has_many :items
 . has_many :orders dependent: destroy
 . has_one :address dependent: destroy
-. has_many :birth_date dependent: destroy
-
-## birth_date テーブル
-
-| Column          | Type       | Options     |
-| --------------- | ---------- | ----------- |
-| birth_year      | date       | null: false |
-| birth_montth    | date       | null: false |
-| birth_day       | date       | null: false |
-
-Association
-. belongs_to :user
 
 
 ## address テーブル
@@ -39,6 +28,7 @@ Association
 | adress           | string     | null: false |
 | zip_code         | string     | null: false |
 | telephone        | string     | null: false |
+| building         | string     | null: false |
 
 Association
 . belongs_to :user
