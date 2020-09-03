@@ -13,25 +13,23 @@
 
 
 Association
-. has_many :items
+. has_many :items dependent :destroy
 . has_many :orders dependent: destroy
-. has_one :address dependent: destroy
 
 
 ## address テーブル
 
 | Column           | Type       | Options     |
 | ---------------- | ---------- | ----------- |
-| user_id          | references | null: false |
 | prefecture_id    | integer    | null: false |
 | city             | string     | null: false |
 | adress           | string     | null: false |
 | zip_code         | string     | null: false |
 | telephone        | string     | null: false |
-| building         | string     | null: false |
+| building         | string     |             |
 
 Association
-. belongs_to :user
+. has_many :order
 
 ## orders テーブル
 
@@ -43,15 +41,16 @@ Association
 Association
 . belongs_to :user
 . belongs_to :item
+. belongs_to :address
 
 ## items テーブル
 
 | Column          | Type       | Options               |
 | --------------- | ---------- | --------------------- |
-| seler_user_id   | integer    | null: false, FK: true |
-| categoly_id     | integer    | null: false, FK: true |
+| user_id         | integer    | null: false, FK: true |
+| category_id     | integer    | null: false           |
 | condition_id    | integer    | null: false           |
-| shippig_id      | integer    | null: fals, FK: true  |
+| shipping_id     | integer    | null: false           |
 | prefecture_id   | intger     | null: false           |
 | delivery_day_id | integer    | null: false           |
 | name            | string     | null: false           |
