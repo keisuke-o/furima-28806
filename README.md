@@ -19,14 +19,15 @@ Association
 
 ## address テーブル
 
-| Column           | Type       | Options     |
-| ---------------- | ---------- | ----------- |
-| prefecture_id    | integer    | null: false |
-| city             | string     | null: false |
-| adress           | string     | null: false |
-| zip_code         | string     | null: false |
-| telephone        | string     | null: false |
-| building         | string     |             |
+| Column           | Type       | Options               |
+| ---------------- | ---------- | --------------------- |
+| prefecture_id    | integer    | null: false           |
+| city             | string     | null: false           |
+| adress           | string     | null: false           |
+| zip_code         | string     | null: false           |
+| telephone        | string     | null: false           |
+| building         | string     |                       |
+| order            | refarences | null :false, FK :true |
 
 Association
 . belongs_to :order
