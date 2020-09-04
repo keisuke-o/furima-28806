@@ -40,7 +40,7 @@ Association
 
 Association
 . belongs_to :user
-. has_one :item
+. belonghs_to :item
 . has_one :address
 
 ## items テーブル
@@ -59,6 +59,6 @@ Association
 
 Association
 . belongs_to :user
-. belongs_to :order
+. has_one :order
 
 
