@@ -29,7 +29,7 @@ Association
 | building         | string     |             |
 
 Association
-. has_many :order
+. belongs_to :order
 
 ## orders テーブル
 
@@ -40,8 +40,8 @@ Association
 
 Association
 . belongs_to :user
-. belongs_to :item
-. belongs_to :address
+. has_one :item
+. has_one :address
 
 ## items テーブル
 
@@ -59,5 +59,6 @@ Association
 
 Association
 . belongs_to :user
+. belongs_to :order
 
 
