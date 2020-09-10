@@ -7,7 +7,6 @@ RSpec.describe User, type: :model do
 
   describe 'ユーザー新規登録' do
     it "全ての項目の入力が存在すれば登録できること" do
-      # user = build(:user)
       expect(@user).to be_valid
     end
     it "nicknameが空だと登録できない" do
@@ -26,6 +25,11 @@ RSpec.describe User, type: :model do
       another_user.email = @user.email
       another_user.valid?
       expect(another_user.errors.full_messages).to include("Email has already been taken")
+    end
+    it "メールアドレスは@を含む必要がある" do
+      @user.email = "test1234"
+      @user.valid?
+      expect(@user.errors[:email]).to include("is invalid")
     end
     it "passwordが空では登録できない" do
       @user.password = ""
