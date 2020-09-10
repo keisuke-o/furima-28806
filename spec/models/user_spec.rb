@@ -52,10 +52,20 @@ RSpec.describe User, type: :model do
       @user.valid?
       expect(@user.errors[:family_name]).to include("can't be blank")
     end
+    it "family_nameが英字では登録できないこと" do
+      @user.family_name = "test"
+      @user.valid?
+      expect(@user.errors[:family_name]).to include("is invalid")
+    end
     it "first_nameがない場合は登録できないこと" do
       @user.first_name = ""
       @user.valid?
       expect(@user.errors[:first_name]).to include("can't be blank")
+    end
+    it "first_nameが英語では登録できないこと" do
+      @user.first_name = "test"
+      @user.valid?
+      expect(@user.errors[:first_name]).to include("is invalid")
     end
     it "family_name_kanaがない場合は登録できないこと" do
       @user.family_name_kana = ""
