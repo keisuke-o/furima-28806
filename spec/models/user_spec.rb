@@ -6,15 +6,14 @@ RSpec.describe User, type: :model do
   end
 
   describe 'ユーザー新規登録' do
+    it "全ての項目の入力が存在すれば登録できること" do
+      # user = build(:user)
+      expect(@user).to be_valid
+    end
     it "nicknameが空だと登録できない" do
       @user.nickname = ""
       @user.valid?
       expect(@user.errors.full_messages).to include("Nickname can't be blank")
-    end
-    it "nicknameが7文字以上であれば登録できない" do
-      @user.nickname = "aaaaaaa"
-      @user.valid?
-      expect(@user.errors.full_messages).to include("Nickname is too long (maximum is 6 characters)")
     end
     it "emailが空では登録できない" do
       @user.email = ""
@@ -44,6 +43,41 @@ RSpec.describe User, type: :model do
       @user.valid?
       expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
     end
-    it 
+    it "family_nameがない場合は登録できないこと" do
+      @user.family_name = ""
+      @user.valid?
+      expect(@user.errors[:family_name]).to include("can't be blank")
+    end
+    it "first_nameがない場合は登録できないこと" do
+      @user.first_name = ""
+      @user.valid?
+      expect(@user.errors[:first_name]).to include("can't be blank")
+    end
+    it "family_name_kanaがない場合は登録できないこと" do
+      @user.family_name_kana = ""
+      @user.valid?
+      expect(@user.errors[:family_name_kana]).to include("can't be blank")
+    end
+    it "first_name_kanaがない場合は登録できないこと" do
+      @user.first_name_kana = ""
+      @user.valid?
+      expect(@user.errors[:first_name_kana]).to include("can't be blank")
+    end
+    it "birth_dayがない場合は登録できないこと" do
+      @user.birth_date = ""
+      @user.valid?
+      expect(@user.errors[:birth_date]).to include("can't be blank")
+    end
+    it 'family_name_kanaが全角カタカナでなければ登録できないこと' do
+      @user.family_name_kana = "あいうえお"
+      @user.valid?
+      expect(@user.errors[:family_name_kana]).to include("is invalid")
+    end
+
+    it 'first_name_kanaが全角カタカナでなければ登録できないこと' do
+      @user.first_name_kana = "あいうえお"
+      @user.valid?
+      expect(@user.errors[:first_name_kana]).to include("is invalid")
+    end
   end
 end
