@@ -9,7 +9,7 @@ class CreateItems < ActiveRecord::Migration[6.0]
       t.integer :delivery_day_id, null: false    
       t.string  :name,            null: false    
       t.integer :price,           null: false    
-      t.text :decribe,            null: false 
+      t.text :describe,            null: false 
       t.timestamps
     end
   end

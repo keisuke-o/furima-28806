@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
+  #protect_from_forgery with: :null_session
+
   before_action :basic_auth
-  #before_action :authenticate_user!
+  # before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   protected
@@ -11,9 +13,9 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def items_params
-    params.require(:items).permit(:user_id, :category_id, :condition_id, :shipping_id, :prefecture_id, :delivery_day_id, :name, :price, :decribe:image).merge(user_id: current_user.id)
-  end
+  #def items_params
+    #params.require(:items).permit(:user_id, :category_id, :condition_id, :shipping_id, :prefecture_id, :delivery_day_id, :name, :price, :decribe:image).merge(user_id: current_user.id)
+  #end
 
   def basic_auth
     authenticate_or_request_with_http_basic do |username, password|
