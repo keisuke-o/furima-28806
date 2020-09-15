@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :items do
+  factory :item do
     name              {"あああ"}
     describe          {"あああ"}
     category          {"レディース"}
@@ -10,5 +10,6 @@ FactoryBot.define do
     price             {"4000"} 
     image   {image.attach(io: File.open('/path/to/file'), filename: 'camera.pnp')}
     
+    association :user 
   end
 end
