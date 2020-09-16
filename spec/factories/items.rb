@@ -8,7 +8,6 @@ FactoryBot.define do
     prefecture_id        {12}
     delivery_day_id      {2}
     price             {4000} 
-    #image   #{image.attach(io: File.open('/path/to/file'), filename: 'camera.pnp')}
     
     association :user 
 
