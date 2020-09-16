@@ -84,47 +84,7 @@ RSpec.describe Item, type: :model do
   end
 
   describe '商品出品機能' do
-    it "商品名があれば登録できる" do
-      expect(@item).to be_valid
-    end
-
-    it "商品説明があれば登録できる" do
-      expect(@item).to be_valid
-    end
-
-    it "カテゴリーが記述されていれば登録できる" do
-      expect(@item).to be_valid
-    end
-
-    it "商品の状態についての情報があれば登録できる" do
-      expect(@item).to be_valid
-    end
-
-    it "配送料の負担についての情報があれば登録できる" do
-      expect(@item).to be_valid
-    end
-
-    it "発送元の地域についての情報があれば登録できる" do
-      expect(@item).to be_valid
-    end
-
-    it "発送までの日数についての情報があれば登録できる" do
-      expect(@item).to be_valid
-    end
-
-    it "価格についての情報があれば登録できる" do
-      expect(@item).to be_valid
-    end
-
-    it "価格が¥300~¥9999999なら登録できる" do
-      expect(@item).to be_valid
-    end
-
-    it "販売価格は半角数字のみ入力可能であること" do
-      expect(@item).to be_valid
-    end
-    
-    it "画像は1枚必須であること" do
+    it "全て入力されていれば登録できる" do
       expect(@item).to be_valid
     end
   end
