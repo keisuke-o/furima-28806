@@ -2,14 +2,18 @@ FactoryBot.define do
   factory :item do
     name              {"あああ"}
     describe          {"あああ"}
-    category          {"レディース"}
-    condition         {"未使用"}
-    shipping          {"着払い（購入者負担）"}
-    prefecture        {"千葉県"}
-    delivery_day      {"1日〜２日で発送"}
-    price             {"4000"} 
-    image   {image.attach(io: File.open('/path/to/file'), filename: 'camera.pnp')}
+    category_id          {2}
+    condition_id         {2}
+    shipping_id          {2}
+    prefecture_id        {12}
+    delivery_day_id      {2}
+    price             {4000} 
+    #image   #{image.attach(io: File.open('/path/to/file'), filename: 'camera.pnp')}
     
     association :user 
+
+    after(:build) do |item|
+      item.image.attach(io: File.open('public/IMG_4935.jpeg'), filename: 'IMG_4935.jpeg')
+    end
   end
 end
