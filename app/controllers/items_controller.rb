@@ -29,7 +29,6 @@ class ItemsController < ApplicationController
 
   def update
     item = Item.find(params[:id])
-    #item.update(item_params)
     if item.update(item_params)
       redirect_to items_path
     else
@@ -39,7 +38,12 @@ class ItemsController < ApplicationController
 
   def destroy
     item = Item.find(params[:id])
-    item.destroy
+    #item.destroy
+    if item.delete(item_params)
+      redirect_to root_path
+    else
+      render :show
+    end
   end
 
 
