@@ -32,7 +32,7 @@ class OrdersController < ApplicationController
   end
 
   def pay_item
-    Payjp.api_key = "sk_test_c3568b45c20c1aedf4500f19"  # PAY.JPテスト秘密鍵
+    Payjp.api_key = "PAYJP_SECRET_KEY" # PAY.JPテスト秘密鍵
     Payjp::Charge.create(
       amount: @item.price,  # 商品の値段
       card: order_params[:token],    # カードトークン
@@ -49,7 +49,7 @@ class OrdersController < ApplicationController
   end
 
   def 
-    
+
 
 
 end
