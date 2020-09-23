@@ -2,9 +2,6 @@ class OrdersController < ApplicationController
 
   before_action :set_item, only: [:index, :create, :pay_item]
 
-  before_action :
-
-
   def index
 
   end
@@ -47,9 +44,5 @@ class OrdersController < ApplicationController
   def set_item
     @item = Item.find(params[:item_id])
   end
-
-  def 
-
-
 
 end
