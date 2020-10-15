@@ -9,7 +9,6 @@ class OrdersController < ApplicationController
   def create
     
     @order = ItemOrder.new(order_params) 
-    #binding.pry
     if @order.valid?
       pay_item
       @order.save
@@ -18,6 +17,11 @@ class OrdersController < ApplicationController
       render 'index'
     end
   end
+
+  # def order
+  #   redirect_to new_card_path and return unless current_user.card.present?
+  # end
+
 
   private
 
@@ -30,9 +34,11 @@ class OrdersController < ApplicationController
 
   def pay_item
     Payjp.api_key = ENV["PAYJP_SECRET_KEY"]# PAY.JPテスト秘密鍵
+    customer_token = current_user.card.customer_token
     Payjp::Charge.create(
       amount: @item.price,  # 商品の値段
       card: order_params[:token],    # カードトークン
+      customer: customer_token,
       currency:'jpy'                 # 通貨の種類(日本円)
     )
   end
